@@ -71,6 +71,8 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     diff-lcs (1.4.4)
+    doorkeeper (5.4.0)
+      railties (>= 5)
     erubi (1.10.0)
     factory_bot (6.2.0)
       activesupport (>= 5.0.0)
@@ -181,6 +183,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   database_cleaner-active_record
+  doorkeeper (~> 5.4.0)
   factory_bot_rails
   faker
   listen (~> 3.3)

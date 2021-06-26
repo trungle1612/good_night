@@ -7,6 +7,7 @@ gem 'rails', '~> 6.1.4'
 gem 'mysql2', '~> 0.5'
 gem 'puma', '~> 5.0'
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'doorkeeper', '~> 5.4.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

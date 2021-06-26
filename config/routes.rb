@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :api, format: :json do
+    namespace :v1 do
+      use_doorkeeper do
+        skip_controllers :authorizations, :applications, :authorized_applications
+
+        controllers tokens: 'sessions'
+      end
+    end
+  end
 end
