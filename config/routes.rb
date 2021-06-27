@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
         controllers tokens: 'sessions'
       end
+
+      resources :followers, only: [:create]
     end
   end
 end

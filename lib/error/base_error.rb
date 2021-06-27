@@ -29,8 +29,6 @@ module Error
 
   class ResourceNotFound < BaseError; end
 
-  class InternalServerError < BaseError; end
-
   class RecordInvalid < BaseError; end
 
   class ParameterMissing < BaseError; end
