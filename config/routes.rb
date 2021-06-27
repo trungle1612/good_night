@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
         controllers tokens: 'sessions'
       end
+
+      resources :followers, only: [:create, :destroy], param: :user_id
     end
   end
 end
