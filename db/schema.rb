@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_26_162137) do
+ActiveRecord::Schema.define(version: 2021_06_27_091910) do
 
   create_table "oauth_access_tokens", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "resource_owner_id"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 2021_06_26_162137) do
     t.index ["token"], name: "index_oauth_access_tokens_on_token", unique: true
   end
 
+  create_table "relationships", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "user_relationship_id", null: false
+    t.string "relationship_type", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "fk_rails_a3d77c3b00"
+    t.index ["user_relationship_id"], name: "fk_rails_7aed78efb2"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -33,4 +43,6 @@ ActiveRecord::Schema.define(version: 2021_06_26_162137) do
   end
 
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
+  add_foreign_key "relationships", "users"
+  add_foreign_key "relationships", "users", column: "user_relationship_id"
 end
