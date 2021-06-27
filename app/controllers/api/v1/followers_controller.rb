@@ -9,4 +9,15 @@ class Api::V1::FollowersController < Api::BaseController
     Followers::CreateService.new(user_id: current_user.id, follower_id: follower.id).call
     head :created
   end
+
+  def destroy
+    relationship = Relationship.find_by!(
+      user_id: current_user.id,
+      user_relationship_id: params[:user_id],
+      relationship_type: Relationship::TYPES[:follower]
+    )
+    relationship.destroy!
+
+    head :no_content
+  end
 end

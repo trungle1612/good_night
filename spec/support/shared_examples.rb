@@ -24,3 +24,9 @@ RSpec.shared_examples 'created_success_request' do
     expect(subject).to eq 201
   end
 end
+
+RSpec.shared_examples 'no_content_request' do
+  it do
+    expect(subject).to eq 204
+  end
+end
