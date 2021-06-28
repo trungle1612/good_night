@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_27_091910) do
+ActiveRecord::Schema.define(version: 2021_06_28_155004) do
 
   create_table "oauth_access_tokens", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "resource_owner_id"
@@ -35,6 +35,17 @@ ActiveRecord::Schema.define(version: 2021_06_27_091910) do
     t.index ["user_relationship_id"], name: "fk_rails_7aed78efb2"
   end
 
+  create_table "time_sleeps", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.date "date", null: false
+    t.datetime "start_time", null: false
+    t.datetime "finish_time", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "date"], name: "index_time_sleeps_on_user_id_and_date", unique: true
+    t.index ["user_id"], name: "index_time_sleeps_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -45,4 +56,5 @@ ActiveRecord::Schema.define(version: 2021_06_27_091910) do
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "user_relationship_id"
+  add_foreign_key "time_sleeps", "users"
 end
