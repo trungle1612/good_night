@@ -19,6 +19,13 @@ RSpec.shared_examples 'conflict_request' do
   end
 end
 
+RSpec.shared_examples 'record_invalid_request' do
+  it do
+    expect(subject).to eq 422
+    expect(JSON.parse(response.body)['success']).to eq false
+  end
+end
+
 RSpec.shared_examples 'created_success_request' do
   it do
     expect(subject).to eq 201

@@ -6,8 +6,8 @@ RSpec.describe Followers::CreateService do
   describe 'Follow a user' do
     subject(:call) { described_class.new(user_id: user_1.id, follower_id: user_2.id).call }
 
-    let(:user_1) { FactoryBot.create(:user) }
-    let(:user_2) { FactoryBot.create(:user) }
+    let(:user_1) { FactoryBot.create(:user, name: 'lorem_1') }
+    let(:user_2) { FactoryBot.create(:user, name: 'lorem_2') }
     context 'when user_1 not follow user_2 yet' do
       it { expect { subject }.to change(Relationship, :count).by(1) }
     end

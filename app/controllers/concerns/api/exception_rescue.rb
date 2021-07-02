@@ -5,7 +5,7 @@ module Api::ExceptionRescue
 
   included do # rubocop:disable Metrics/BlockLength
     rescue_from ActionController::ParameterMissing do |ex|
-      render_400(Error::ParameterMissing.new(400, ex.message))
+      render_400(Error::ParameterMissing.new(400, ex.original_message))
     end
 
     rescue_from Api::Errors::ParameterMissing, Api::Errors::BadRequest, with: :render_400
