@@ -6,4 +6,5 @@ class User < ApplicationRecord
             class_name: 'Doorkeeper::AccessToken',
             foreign_key: :resource_owner_id,
             dependent: :delete_all # or :destroy if you need callbacks
+  has_many :time_sleeps, dependent: :destroy
 end

@@ -32,7 +32,7 @@ RSpec.describe TimeSleep, type: :model do
       time_sleep.finish_time = Time.current.to_datetime
       time_sleep.valid?
 
-      expect(time_sleep.errors.full_messages.first).to eq 'Finish time must be less than start_time'
+      expect(time_sleep.errors.full_messages.first).to eq 'Finish time must be greater than start_time'
     end
 
     it { is_expected.to validate_presence_of(:date) }
