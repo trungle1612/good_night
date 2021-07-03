@@ -19,7 +19,7 @@ git clone git@github.com:trungle1612/good_night.git
 rspec
 ```
 
-3. Start server
+6. Start server
 ```
 rails server
 ```
@@ -128,7 +128,6 @@ Doorkeeper::AccessToken.create(resource_owner_id: user_id)
 |start_time  | true     |datetime |2021-07-02 23:00 |
 |finish_time | true     |datetime |2021-07-03 06:00 |
 
-** with `fowllower_id` return time_sleeps of friends, and without `follower_id` return time_sleeps of your self
 - response
 
 ```json
