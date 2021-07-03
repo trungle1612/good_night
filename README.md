@@ -14,6 +14,16 @@ git clone git@github.com:trungle1612/good_night.git
 3. `rake db:create`
 4. `rake db:migrate`
 
+2. run test
+```ruby
+rspec
+```
+
+3. Start server
+```
+rails server
+```
+
 ## DB schema
 ![DB](https://i.imgur.com/XihUKCz.png)
 
