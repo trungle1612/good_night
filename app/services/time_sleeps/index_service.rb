@@ -8,12 +8,23 @@ module TimeSleeps
     end
 
     def call
-     time_sleeps = @user.time_sleeps
-       .select(:id, :date, :start_time, :finish_time)
-       .select('finish_time - start_time AS length_sleep')
+      return owner if @type == 'owner'
 
-     return time_sleeps.order(created_at: :asc) if @type == 'owner'
-     time_sleeps.order('length_sleep desc')
+      user_following
+    end
+
+    def owner
+     @user.time_sleeps
+          .select(:id, :date, :start_time, :finish_time)
+          .order(created_at: :asc)
+    end
+
+    def user_following
+      @user.time_sleeps
+           .select(:id, :date, :start_time, :finish_time)
+           .select('finish_time - start_time AS length_sleep')
+           .where('date >=  ?', (Time.current - 7.days).to_date)
+           .order('length_sleep desc')
     end
   end
 end
