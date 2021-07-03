@@ -2,7 +2,15 @@
 
 class Api::V1::TimeSleepsController < Api::BaseController
   def index
-    time_sleeps = TimeSleeps::IndexService.new(user: current_user, type: 'owner').call
+    user = current_user
+    type = 'owner'
+    if params[:follower_id]
+      relation_ship = Relationship.find_by!(user_id: user.id, user_relationship_id: params[:follower_id])
+      user = User.find_by!(id: params[:follower_id])
+      type = 'follower'
+    end
+
+    time_sleeps = TimeSleeps::IndexService.new(user: user, type: type).call
 
     render json: time_sleeps, status: :ok
   end
