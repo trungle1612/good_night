@@ -26,6 +26,12 @@ RSpec.shared_examples 'record_invalid_request' do
   end
 end
 
+RSpec.shared_examples 'success_request' do
+  it do
+    expect(subject).to eq 200
+  end
+end
+
 RSpec.shared_examples 'created_success_request' do
   it do
     expect(subject).to eq 201

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Api::BaseController < ActionController::API
-  include Api::Rendering
   include Api::ExceptionRescue
   before_action :doorkeeper_authorize!
 

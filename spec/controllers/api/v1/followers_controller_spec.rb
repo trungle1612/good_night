@@ -6,8 +6,8 @@ RSpec.describe Api::V1::FollowersController, type: :request do
   describe 'Follow a user' do
     subject { post '/api/v1/followers', headers: headers, params: params }
 
-    let(:user_1) { FactoryBot.create(:user) }
-    let(:user_2) { FactoryBot.create(:user) }
+    let(:user_1) { FactoryBot.create(:user, name: 'lorem_1') }
+    let(:user_2) { FactoryBot.create(:user, name: 'lorem_2') }
     let(:user_2_id) { user_2.id }
     let(:access_token) { FactoryBot.create(:access_token, resource_owner_id: user_1.id) }
     let(:headers) { {'Authorization': "Bearer #{access_token.token}"} }

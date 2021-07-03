@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       end
 
       resources :followers, only: [:create, :destroy], param: :user_id
-      resources :time_sleeps, only: [:create]
+      resources :time_sleeps, only: [:create, :index]
     end
   end
 end

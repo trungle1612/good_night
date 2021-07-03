@@ -17,4 +17,8 @@ class TimeSleep < ApplicationRecord
 
     errors.add :finish_time, 'must be greater than start_time' if start_time >= finish_time
   end
+
+  def length_sleep
+    ((finish_time - start_time) / 3600.0).round(2)
+  end
 end
